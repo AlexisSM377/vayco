@@ -8,4 +8,46 @@ use Illuminate\Database\Eloquent\Model;
 class Producto extends Model
 {
     use HasFactory;
+
+    /**
+     *
+     *
+     * aisgne alk modelo prodtco los atributos de la tablas producto
+     */
+    protected $fillable = [
+        'nombre',
+        'url_imagen',
+        'descripcion',
+        'iva',
+        'precio_neto',
+        'existencia',
+        'proveedor_id',
+        'categoria_id',
+        'marca_id',
+    ];
+
+    /**
+     * relacione producto a su proveedor
+     */
+    public function proveedor()
+    {
+        return $this->hasOne(Proveedor::class,'id', 'proveedor_id');
+    }
+
+    /**
+     * relacione producto a su categoria
+     */
+    public function categoria()
+    {
+        return $this->hasOne(Categoria::class,'id', 'categoria_id');
+    }
+
+    /**
+     * relacione producto a su marca
+     */
+    public function marca()
+    {
+        return $this->hasOne(Marca::class,'id', 'marca_id');
+    }
 }
+

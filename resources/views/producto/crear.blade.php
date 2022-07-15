@@ -2,6 +2,7 @@
 
 @section('content')
 <div class="container">
+    <a href="{{ route('home') }}">Regresar</a>
 
     <div class="row justify-content-center">
         <div class="col-md-8">
@@ -9,16 +10,16 @@
                 <div class="card-header">Registar Producto</div>
 
                 <div class="card-body">
-                    <form method="POST" action="{{ route('register') }}">
+                    <form method="POST" action="{{ route('productos.store') }}" enctype="multipart/form-data" >
                         @csrf
 
                         <div class="row mb-3">
-                            <label for="name" class="col-md-4 col-form-label text-md-end">Nombre</label>
+                            <label for="nombre" class="col-md-4 col-form-label text-md-end">Nombre</label>
 
                             <div class="col-md-6">
-                                <input id="name" type="text" class="form-control @error('name') is-invalid @enderror" name="name" value="{{ old('name') }}" required autocomplete="name" autofocus>
+                                <input id="nombre" type="text" class="form-control @error('nombre') is-invalid @enderror" name="nombre" value="{{ old('nombre') }}" required>
 
-                                @error('name')
+                                @error('nombre')
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>
                                     </span>
@@ -27,12 +28,25 @@
                         </div>
 
                         <div class="row mb-3">
-                            <label for="email" class="col-md-4 col-form-label text-md-end">Descripcion</label>
+                            <label for="imagen" class="col-md-4 col-form-label text-md-end">Imagen</label>
+                            <div class="col-md-6">
+                                <input type="file" class="form-control @error('imagen') is-invalid @enderror" id="imagen" name="imagen" required>
+                                @error('imagen')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                @enderror
+                            </div>
+
+                          </div>
+
+                        <div class="row mb-3">
+                            <label for="descripcion" class="col-md-4 col-form-label text-md-end">Descripcion</label>
 
                             <div class="col-md-6">
-                                <input id="email" type="email" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" required autocomplete="email">
+                                <input id="descripcion" type="text" class="form-control @error('descripcion') is-invalid @enderror" name="descripcion" value="{{ old('descripcion') }}" required>
 
-                                @error('email')
+                                @error('descripcion')
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>
                                     </span>
@@ -41,12 +55,12 @@
                         </div>
 
                         <div class="row mb-3">
-                            <label for="password" class="col-md-4 col-form-label text-md-end">Precio</label>
+                            <label for="precio" class="col-md-4 col-form-label text-md-end">Precio</label>
 
                             <div class="col-md-6">
-                                <input id="password" type="password" class="form-control @error('password') is-invalid @enderror" name="password" required autocomplete="new-password">
+                                <input id="precio" type="number" class="form-control @error('precio') is-invalid @enderror" name="precio" value="{{ old('precio') }}" required>
 
-                                @error('password')
+                                @error('precio')
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>
                                     </span>
@@ -55,31 +69,46 @@
                         </div>
 
                         <div class="row mb-3">
-                            <label for="password-confirm" class="col-md-4 col-form-label text-md-end">IVA</label>
+                            <label for="iva" class="col-md-4 col-form-label text-md-end">IVA</label>
 
                             <div class="col-md-6">
-                                <input id="password-confirm" type="password" class="form-control" name="password_confirmation" required autocomplete="new-password">
+                                <input id="iva" type="number" class="form-control" name="iva" value="{{ old('iva') }}" required >
+                                @error('iva')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                @enderror
                             </div>
                         </div>
                         <div class="row mb-3">
-                            <label for="password-confirm" class="col-md-4 col-form-label text-md-end">Precio Neto</label>
+                            <label for="neto" class="col-md-4 col-form-label text-md-end">Precio Neto</label>
 
                             <div class="col-md-6">
-                                <input id="password-confirm" type="password" class="form-control" name="password_confirmation" required autocomplete="new-password">
+                                <input id="neto" type="number" class="form-control" name="neto" value="{{ old('neto') }}" required>
+                                @error('neto')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                @enderror
                             </div>
                         </div>
                         <div class="row mb-3">
-                            <label for="password-confirm" class="col-md-4 col-form-label text-md-end">Existencia</label>
+                            <label for="existencia" class="col-md-4 col-form-label text-md-end">Existencia</label>
 
                             <div class="col-md-6">
-                                <input id="password-confirm" type="password" class="form-control" name="password_confirmation" required autocomplete="new-password">
+                                <input id="existencia" type="number" class="form-control" name="existencia" value="{{ old('existencia') }}" required>
+                                @error('existencia')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                @enderror
                             </div>
                         </div>
                         <div class="row mb-3">
-                            <label for="password-confirm" class="col-md-4 col-form-label text-md-end">Proveedor</label>
+                            <label for="proveedor" class="col-md-4 col-form-label text-md-end">Proveedor</label>
 
                             <div class="col-md-6">
-                                <select class="form-select" aria-label="Default select example">
+                                <select class="form-select" name="proveedor" required>
                                     <option selected>Selecciona una Opcion</option>
                                     @forelse ($proveedores as $proveedor)
                                     <option value="{{$proveedor->id}}">{{$proveedor->razon_social}}</option>
@@ -87,12 +116,17 @@
                                     <option value="">Sin proveedores</option>
                                     @endforelse
                                   </select>
+                                    @error('proveedor')
+                                        <span class="invalid-feedback" role="alert">
+                                            <strong>{{ $message }}</strong>
+                                        </span>
+                                    @enderror
                             </div>
                         </div>    <div class="row mb-3">
-                            <label for="password-confirm" class="col-md-4 col-form-label text-md-end">Categoria</label>
+                            <label for="categoria" class="col-md-4 col-form-label text-md-end">Categoria</label>
 
                             <div class="col-md-6">
-                                <select class="form-select" aria-label="Default select example">
+                                <select class="form-select" name="categoria" required>
                                     <option selected>Selecciona una Opcion</option>
                                     @forelse ($categorias as $categoria)
                                     <option value="{{$categoria->id}}">{{$categoria->nombre}}</option>
@@ -100,13 +134,18 @@
                                     <option value="">Sin categorias</option>
                                     @endforelse
                                   </select>
+                                    @error('categoria')
+                                        <span class="invalid-feedback" role="alert">
+                                            <strong>{{ $message }}</strong>
+                                        </span>
+                                    @enderror
                             </div>
                         </div>
                         <div class="row mb-3">
-                            <label for="password-confirm" class="col-md-4 col-form-label text-md-end">Marca</label>
+                            <label for="marca" class="col-md-4 col-form-label text-md-end">Marca</label>
 
                             <div class="col-md-6">
-                                <select class="form-select" aria-label="Default select example">
+                                <select class="form-select" name="marca" required>
                                     <option selected>Selecciona una Opcion</option>
                                     @forelse ($marcas as $marca)
                                     <option value="{{$marca->id}}">{{$marca->nombre}}</option>
@@ -114,12 +153,17 @@
                                     <option value="">Sin marcas</option>
                                     @endforelse
                                   </select>
+                                    @error('marca')
+                                        <span class="invalid-feedback" role="alert">
+                                            <strong>{{ $message }}</strong>
+                                        </span>
+                                    @enderror
                             </div>
                         </div>
 
                         <div class="row mb-0">
                             <div class="col-md-6 offset-md-4">
-                                <a href="{{ route('home') }}" class="btn btn-warning stretched-link">Regresar</a>
+
 
                                 <button type="submit" class="btn btn-primary">
                                     {{ __('Registrar') }}

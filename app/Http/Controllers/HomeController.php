@@ -1,7 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
-
+use App\Models\Producto;
 use Illuminate\Http\Request;
 
 class HomeController extends Controller
@@ -23,6 +23,13 @@ class HomeController extends Controller
      */
     public function index()
     {
-        return view('home');
+        //cree la variable prodcutos para guaradar los datos de la tabvla producto
+        // consulte todos los datos de la tabla productos
+        $productos = Producto::all();
+
+        //envie los datos de productos a la vista home
+        return view('home', [
+            'productos' => $productos,
+        ]);
     }
 }

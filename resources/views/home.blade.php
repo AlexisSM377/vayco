@@ -20,7 +20,7 @@
         </div>
     </div>
     <div class="d-grid gap-2 d-md-flex justify-content-md-end mt-5 mb-5">
-        <a href="{{ route('productos.create') }}" class="btn btn-primary stretched-link">Crear producto</a>
+        <a href="{{ route('productos.create') }}" >Crear producto</a>
     </div>
     <table class="table table-striped table-hover">
         <thead>
@@ -37,7 +37,22 @@
             </tr>
           </thead>
           <tbody>
+            @forelse ($productos as $producto)
+            <tr>
+                <td>{{$producto->nombre}}</td>
+                <td>{{$producto->descripcion}}</td>
+                <td>{{$producto->precio}}</td>
+                <td>{{$producto->iva}}</td>
+                <td>{{$producto->precio_neto}}</td>
+                <td>{{$producto->existencia}}</td>
+                <td>{{$producto->proveedor->razon_social}}</td>
+                <td>{{$producto->categoria->nombre}}</td>
+                <td>{{$producto->marca->nombre}}</td>
+            </tr>
 
+            @empty
+            <option value="">Sin proveedores</option>
+            @endforelse
           </tbody>
       </table>
 </div>
