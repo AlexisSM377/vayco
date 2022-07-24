@@ -69,7 +69,7 @@ class ProductoController extends Controller
         //guarde el producto con la informacion del formulario
         $producto = new Producto;
         $producto->nombre = $request->nombre;
-        $producto->url_imagen = public_path('images')."/". $imageName;
+        $producto->url_imagen = $imageName;
         $producto->descripcion = $request->descripcion;
         $producto->precio = $request->precio;
         $producto->iva = $request->iva;
@@ -92,7 +92,10 @@ class ProductoController extends Controller
      */
     public function show($id)
     {
-        //
+        $producto = Producto::find($id);
+        unlink("images/".$producto->url_imagen);
+        $producto->delete();
+        return back();
     }
 
     /**
@@ -103,7 +106,6 @@ class ProductoController extends Controller
      */
     public function edit($id)
     {
-        //
     }
 
     /**
@@ -126,6 +128,5 @@ class ProductoController extends Controller
      */
     public function destroy($id)
     {
-        //
     }
 }

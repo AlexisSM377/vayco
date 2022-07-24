@@ -34,6 +34,7 @@
               <th scope="col">Proveedor</th>
               <th scope="col">Categoria</th>
               <th scope="col">Marca</th>
+              <th scope="col">Acciones</th>
             </tr>
           </thead>
           <tbody>
@@ -48,6 +49,7 @@
                 <td>{{$producto->proveedor->razon_social}}</td>
                 <td>{{$producto->categoria->nombre}}</td>
                 <td>{{$producto->marca->nombre}}</td>
+                <td> <a href="{{ route('productos.destroy', $producto->id) }}" >Borrar</a></td>
             </tr>
 
             @empty

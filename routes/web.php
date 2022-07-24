@@ -1,7 +1,9 @@
 <?php
 
+use App\Http\Controllers\AllProductsController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ProductoController;
+use App\Http\Controllers\WebController;
 use Illuminate\Support\Facades\Auth;
 
 /*
@@ -16,10 +18,17 @@ use Illuminate\Support\Facades\Auth;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('index');
 });
+
+
 
 Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+
 Route::resource('productos', ProductoController::class);
+
+Route::get('/productos-inicio', [WebController::class, 'index'])->name('productos.inicio');
+Route::get('/contactanos', [WebController::class, 'contact'])->name('contactanos');
+Route::get('/historia', [WebController::class, 'historia'])->name('historia');
