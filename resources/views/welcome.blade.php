@@ -92,20 +92,6 @@
                 VAYCO
               </h1>
             </div>
-            <div class="d-flex pt-2">
-              <a class="btn btn-square btn-outline-primary me-1" href=""
-                ><i class="fab fa-twitter"></i
-              ></a>
-              <a class="btn btn-square btn-outline-primary me-1" href=""
-                ><i class="fab fa-facebook-f"></i
-              ></a>
-              <a class="btn btn-square btn-outline-primary me-1" href=""
-                ><i class="fab fa-youtube"></i
-              ></a>
-              <a class="btn btn-square btn-outline-primary me-0" href=""
-                ><i class="fab fa-linkedin-in"></i
-              ></a>
-            </div>
           </div>
           <div class="col-lg-4 col-md-6">
             <h4 class="text-light mb-4">Dirección</h4>
@@ -117,11 +103,10 @@
           </div>
           <div class="col-lg-4 col-md-6">
             <h4 class="text-light mb-4">Enlaces rápidos</h4>
-            <a class="btn btn-link" href="">Sobre nosotros</a>
+            <a class="btn btn-link" href="">Inicio</a>
+            <a class="btn btn-link" href="">Historia</a>
+            <a class="btn btn-link" href="">Productos</a>
             <a class="btn btn-link" href="">Contactanos</a>
-            <a class="btn btn-link" href="">Nuestros servicios</a>
-            <a class="btn btn-link" href="">Términos y Condiciones</a>
-            <a class="btn btn-link" href="">Support</a>
           </div>
         </div>
       </div>

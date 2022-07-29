@@ -20,7 +20,9 @@
         </div>
     </div>
     <div class="d-grid gap-2 d-md-flex justify-content-md-end mt-5 mb-5">
-        <a href="{{ route('productos.create') }}" >Crear producto</a>
+        <a role="button" href="{{ route('productos.create') }}" class="btn btn-primary">
+            Crear producto
+        </a>
     </div>
     <table class="table table-striped table-hover">
         <thead>
@@ -49,7 +51,15 @@
                 <td>{{$producto->proveedor->razon_social}}</td>
                 <td>{{$producto->categoria->nombre}}</td>
                 <td>{{$producto->marca->nombre}}</td>
-                <td> <a href="{{ route('productos.destroy', $producto->id) }}" >Borrar</a></td>
+                <td>
+                    <form method="POST" action="{{ route('productos.destroy', $producto->id) }}">
+                        @csrf
+                        <input type="hidden" name="_method" value="DELETE">
+                        <button type="submit" class="btn btn-danger btn-icon" title="Borrar">
+                            🪣
+                        </button>
+                    </form>
+                </td>
             </tr>
 
             @empty

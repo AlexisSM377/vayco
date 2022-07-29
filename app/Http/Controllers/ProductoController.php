@@ -92,10 +92,6 @@ class ProductoController extends Controller
      */
     public function show($id)
     {
-        $producto = Producto::find($id);
-        unlink("images/".$producto->url_imagen);
-        $producto->delete();
-        return back();
     }
 
     /**
@@ -128,5 +124,10 @@ class ProductoController extends Controller
      */
     public function destroy($id)
     {
+        $producto = Producto::find($id);
+        unlink("images/".$producto->url_imagen);
+        $producto->delete();
+
+        return back();
     }
 }
