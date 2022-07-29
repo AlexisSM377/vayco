@@ -19,7 +19,7 @@
                             <label for="nombre" class="col-md-4 col-form-label text-md-end">Nombre</label>
 
                             <div class="col-md-6">
-                                <input id="nombre" type="text" class="form-control @error('nombre') is-invalid @enderror" name="nombre" value="{{ old('nombre') }}" required>
+                                <input id="nombre" type="text" class="form-control @error('nombre') is-invalid @enderror" name="nombre" value="{{ old('nombre') }}">
 
                                 @error('nombre')
                                     <span class="invalid-feedback" role="alert">
@@ -32,7 +32,7 @@
                         <div class="row mb-3">
                             <label for="imagen" class="col-md-4 col-form-label text-md-end">Imagen</label>
                             <div class="col-md-6">
-                                <input type="file" class="form-control @error('imagen') is-invalid @enderror" id="imagen" name="imagen" required>
+                                <input type="file" class="form-control @error('imagen') is-invalid @enderror" id="imagen" name="imagen">
                                 @error('imagen')
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>
@@ -46,7 +46,7 @@
                             <label for="descripcion" class="col-md-4 col-form-label text-md-end">Descripcion</label>
 
                             <div class="col-md-6">
-                                <input id="descripcion" type="text" class="form-control @error('descripcion') is-invalid @enderror" name="descripcion" value="{{ old('descripcion') }}" required>
+                                <input id="descripcion" type="text" class="form-control @error('descripcion') is-invalid @enderror" name="descripcion" value="{{ old('descripcion') }}">
 
                                 @error('descripcion')
                                     <span class="invalid-feedback" role="alert">
@@ -60,7 +60,7 @@
                             <label for="precio" class="col-md-4 col-form-label text-md-end">Precio</label>
 
                             <div class="col-md-6">
-                                <input id="precio" type="number" class="form-control @error('precio') is-invalid @enderror" name="precio" value="{{ old('precio') }}" required>
+                                <input id="precio" type="number" class="form-control @error('precio') is-invalid @enderror" name="precio" value="{{ old('precio') }}">
 
                                 @error('precio')
                                     <span class="invalid-feedback" role="alert">
@@ -74,7 +74,7 @@
                             <label for="iva" class="col-md-4 col-form-label text-md-end">IVA</label>
 
                             <div class="col-md-6">
-                                <input id="iva" type="number" class="form-control" name="iva" value="{{ old('iva') }}" required >
+                                <input id="iva" type="number" class="form-control @error('iva') is-invalid @enderror" name="iva" value="{{ old('iva') }}" >
                                 @error('iva')
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>
@@ -86,7 +86,7 @@
                             <label for="neto" class="col-md-4 col-form-label text-md-end">Precio Neto</label>
 
                             <div class="col-md-6">
-                                <input id="neto" type="number" class="form-control" name="neto" value="{{ old('neto') }}" required>
+                                <input id="neto" type="number" class="form-control @error('neto') is-invalid @enderror" name="neto" value="{{ old('neto') }}">
                                 @error('neto')
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>
@@ -98,7 +98,7 @@
                             <label for="existencia" class="col-md-4 col-form-label text-md-end">Existencia</label>
 
                             <div class="col-md-6">
-                                <input id="existencia" type="number" class="form-control" name="existencia" value="{{ old('existencia') }}" required>
+                                <input id="existencia" type="number" class="form-control @error('existencia') is-invalid @enderror" name="existencia" value="{{ old('existencia') }}">
                                 @error('existencia')
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>
@@ -110,8 +110,8 @@
                             <label for="proveedor" class="col-md-4 col-form-label text-md-end">Proveedor</label>
 
                             <div class="col-md-6">
-                                <select class="form-select" name="proveedor" required>
-                                    <option selected>Selecciona una Opcion</option>
+                                <select class="form-select @error('proveedor') is-invalid @enderror" name="proveedor">
+                                    <option value="">Selecciona una Opcion</option>
                                     @forelse ($proveedores as $proveedor)
                                     <option value="{{$proveedor->id}}">{{$proveedor->razon_social}}</option>
                                     @empty
@@ -124,12 +124,13 @@
                                         </span>
                                     @enderror
                             </div>
-                        </div>    <div class="row mb-3">
+                        </div>
+                        <div class="row mb-3">
                             <label for="categoria" class="col-md-4 col-form-label text-md-end">Categoria</label>
 
                             <div class="col-md-6">
-                                <select class="form-select" name="categoria" required>
-                                    <option selected>Selecciona una Opcion</option>
+                                <select class="form-select @error('categoria') is-invalid @enderror" name="categoria">
+                                    <option value="">Selecciona una Opcion</option>
                                     @forelse ($categorias as $categoria)
                                     <option value="{{$categoria->id}}">{{$categoria->nombre}}</option>
                                     @empty
@@ -147,8 +148,8 @@
                             <label for="marca" class="col-md-4 col-form-label text-md-end">Marca</label>
 
                             <div class="col-md-6">
-                                <select class="form-select" name="marca" required>
-                                    <option selected>Selecciona una Opcion</option>
+                                <select class="form-select @error('marca') is-invalid @enderror" name="marca">
+                                    <option value="">Selecciona una Opcion</option>
                                     @forelse ($marcas as $marca)
                                     <option value="{{$marca->id}}">{{$marca->nombre}}</option>
                                     @empty

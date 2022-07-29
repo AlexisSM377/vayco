@@ -2,13 +2,12 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Categoria;
-use App\Models\Marca;
-use App\Models\Producto;
+use App\Models\Direccion;
+use App\Models\Municipio;
 use App\Models\Proveedor;
 use Illuminate\Http\Request;
 
-class ProductoController extends Controller
+class ProveedorController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -17,7 +16,11 @@ class ProductoController extends Controller
      */
     public function index()
     {
-        //
+        $proveedores = Proveedor::all();
+
+        return view('proveedor.index', [
+            'proveedores' => $proveedores
+        ]);
     }
 
     /**
@@ -27,14 +30,11 @@ class ProductoController extends Controller
      */
     public function create()
     {
-        $proveedores = Proveedor::all();
-        $categorias = Categoria::all();
-        $marcas = Marca::all();
+        $municipios = Municipio::all();
 
-        return view('producto.crear', [
-            'proveedores' => $proveedores,
-            'categorias' => $categorias,
-            'marcas' => $marcas,
+
+        return view('proveedor.crear', [
+            'municipios' => $municipios,
         ]);
     }
 
@@ -50,38 +50,35 @@ class ProductoController extends Controller
         //define las regalas que debe de tener cada atribito
         $request->validate([
             'nombre' => 'required',
-            'imagen' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
-            'descripcion' => 'required',
-            'precio' => 'required',
-            'iva' => 'required',
-            'neto' => 'required',
-            'existencia' => 'required',
-            'proveedor' => 'required|integer',
-            'categoria' => 'required|integer',
-            'marca' => 'required|integer',
+            'rfc' => 'required',
+            'email' => 'required|email',
+            'colonia' => 'required',
+            'cp' => 'required',
+            'calle' => 'required',
+            'numero' => 'required',
+            'municipio' => 'required',
         ]);
 
-        //creacion del nombre de la imagen subida
-        $imageName = time().'.'.$request->imagen->extension();
-        //guarddado de la imagen en la carpetas imagenes
-        $request->imagen->move(public_path('images'), $imageName);
+        //guarde el producto con la informacion del formulario
+        $direccion = new Direccion();
+        $direccion->colonia= $request->colonia;
+        $direccion->cp = $request->cp;
+        $direccion->calle = $request->calle;
+        $direccion->no_ext = $request->numero;
+        $direccion->municipio_id = $request->municipio;
+        $direccion->saveOrFail();
+
 
         //guarde el producto con la informacion del formulario
-        $producto = new Producto;
-        $producto->nombre = $request->nombre;
-        $producto->url_imagen = $imageName;
-        $producto->descripcion = $request->descripcion;
-        $producto->precio = $request->precio;
-        $producto->iva = $request->iva;
-        $producto->precio_neto = $request->neto;
-        $producto->existencia = $request->existencia;
-        $producto->proveedor_id = $request->proveedor;
-        $producto->categoria_id = $request->categoria;
-        $producto->marca_id = $request->marca;
-        $producto->saveOrFail();
+        $proveedor = new Proveedor();
+        $proveedor->razon_social = $request->nombre;
+        $proveedor->rfc = $request->rfc;
+        $proveedor->correo = $request->email;
+        $proveedor->direccion_id = $direccion->id;
+        $proveedor->saveOrFail();
 
         //despues de guardar el prodcuto lo redireccione a la ruta home donde se muestra el prodcto que acabo de guardar
-        return redirect()->route("home");
+        return redirect()->route("proveedores.index")->with('status', 'Proveedor guardado correctamente!');
     }
 
     /**
@@ -92,6 +89,7 @@ class ProductoController extends Controller
      */
     public function show($id)
     {
+        //
     }
 
     /**
@@ -102,6 +100,7 @@ class ProductoController extends Controller
      */
     public function edit($id)
     {
+        //
     }
 
     /**
@@ -124,10 +123,6 @@ class ProductoController extends Controller
      */
     public function destroy($id)
     {
-        $producto = Producto::find($id);
-        unlink("images/".$producto->url_imagen);
-        $producto->delete();
-
-        return back();
+        //
     }
 }

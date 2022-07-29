@@ -62,12 +62,29 @@
                                     <a class="dropdown-item" href="{{ route('logout') }}"
                                        onclick="event.preventDefault();
                                                      document.getElementById('logout-form').submit();">
-                                        {{ __('Logout') }}
+                                        Cerrar sesión
+
                                     </a>
 
                                     <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
                                         @csrf
                                     </form>
+
+                                    <a class="dropdown-item" href="{{ route('proveedores.index') }}">
+                                        Proveedores
+                                    </a>
+                                    <a class="dropdown-item" href="{{ route('marcas.index') }}">
+                                        Marca
+                                    </a>
+                                    <a class="dropdown-item" href="{{ route('categorias.index') }}">
+                                        Categoría
+                                    </a>
+                                    <a class="dropdown-item" href="{{ route('home') }}">
+                                        Productos
+                                    </a>
+                                    <a class="dropdown-item" href="{{ route('contactos') }}">
+                                        Contactos
+                                    </a>
                                 </div>
                             </li>
                         @endguest

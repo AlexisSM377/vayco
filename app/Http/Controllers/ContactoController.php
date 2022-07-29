@@ -7,6 +7,15 @@ use Illuminate\Http\Request;
 
 class ContactoController extends Controller
 {
+    public function index()
+    {
+        $contactos = Contacto::all();
+
+        return view('contacto.index', [
+            'contactos' => $contactos
+        ]);
+    }
+
     public function enviar(Request $request)
     {
 
@@ -21,7 +30,7 @@ class ContactoController extends Controller
         //guarde el producto con la informacion del formulario
         $contacto = new Contacto();
         $contacto->nombre = $request->nombre;
-        $contacto->email = $request->email;;
+        $contacto->email = $request->email;
         $contacto->asunto = $request->asunto;
         $contacto->mensaje = $request->mensaje;
         $contacto->saveOrFail();
