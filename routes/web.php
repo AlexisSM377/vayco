@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\AllProductsController;
+use App\Http\Controllers\ContactoController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ProductoController;
 use App\Http\Controllers\WebController;
@@ -32,3 +33,4 @@ Route::resource('productos', ProductoController::class);
 Route::get('/productos-inicio', [WebController::class, 'index'])->name('productos.inicio');
 Route::get('/contactanos', [WebController::class, 'contact'])->name('contactanos');
 Route::get('/historia', [WebController::class, 'historia'])->name('historia');
+Route::post('/contacto', [ContactoController::class, 'enviar'])->name('contacto');

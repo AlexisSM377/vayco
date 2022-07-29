@@ -33,53 +33,88 @@ data-wow-delay="0.1s"
       <div class="border-start border-5 border-primary ps-4 mb-5">
         <h6 class="text-body text-uppercase mb-2">Contactanos</h6>
         <h1 class="display-6 mb-0">
-          Si tiene alguna contáctenos
+          Si tiene alguna duda contáctenos
         </h1>
+        @if (session('status'))
+            <div class="alert alert-success">
+                {{ session('status') }}
+            </div>
+        @endif
       </div>
-      <form>
+      <form method="POST" action="{{ route('contacto') }}">
+        @csrf
         <div class="row g-3">
           <div class="col-md-6">
             <div class="form-floating">
               <input
                 type="text"
-                class="form-control border-0 bg-light"
-                id="name"
-                placeholder="Your Name"
+                class="form-control border-0 bg-light @error('nombre') is-invalid @enderror"
+                name="nombre"
+                value="{{ old('nombre') }}"
+                id="nombre"
+                placeholder="escribe tu nombre"
               />
-              <label for="name">Nombre</label>
+
+              <label for="nombre">Nombre</label>
+              @error('nombre')
+                <span class="invalid-feedback" role="alert">
+                    <strong>{{ $message }}</strong>
+                </span>
+            @enderror
             </div>
           </div>
           <div class="col-md-6">
             <div class="form-floating">
               <input
                 type="email"
-                class="form-control border-0 bg-light"
+                class="form-control border-0 bg-light @error('email') is-invalid @enderror"
+                name="email"
+                value="{{ old('email') }}"
                 id="email"
                 placeholder="Your Email"
               />
               <label for="email">Email</label>
+              @error('email')
+                <span class="invalid-feedback" role="alert">
+                    <strong>{{ $message }}</strong>
+                </span>
+            @enderror
             </div>
           </div>
           <div class="col-12">
             <div class="form-floating">
               <input
                 type="text"
-                class="form-control border-0 bg-light"
-                id="subject"
-                placeholder="Subject"
+                class="form-control border-0 bg-light @error('asunto') is-invalid @enderror"
+                name="asunto"
+                value="{{ old('asunto') }}"
+                id="asunto"
+                placeholder="asunto"
               />
-              <label for="subject">Sujeto</label>
+              <label for="asunto">Asunto</label>
+              @error('asunto')
+                <span class="invalid-feedback" role="alert">
+                    <strong>{{ $message }}</strong>
+                </span>
+            @enderror
             </div>
           </div>
           <div class="col-12">
             <div class="form-floating">
               <textarea
-                class="form-control border-0 bg-light"
+                class="form-control border-0 bg-light @error('mensaje') is-invalid @enderror"
+                name="mensaje"
+                value="{{ old('mensaje') }}"
                 placeholder="Leave a message here"
-                id="message"
+                id="mensage"
                 style="height: 150px"
               ></textarea>
-              <label for="message">Mensaje</label>
+              <label for="mensaje">Mensaje</label>
+              @error('mensaje')
+                <span class="invalid-feedback" role="alert">
+                    <strong>{{ $message }}</strong>
+                </span>
+            @enderror
             </div>
           </div>
           <div class="col-12">
