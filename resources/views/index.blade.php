@@ -86,7 +86,6 @@
         <div class="col-lg-6">
           <div class="h-100">
             <div class="border-start border-5 border-primary ps-4 mb-5">
-              <h6 class="text-body text-uppercase mb-2">Sobre nosotros</h6>
               <h1 class="display-6 mb-0">
                 ¡Soluciones Únicas Para Industrias!
               </h1>

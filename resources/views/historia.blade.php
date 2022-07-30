@@ -43,7 +43,7 @@ data-wow-delay="0.1s"
               </h1>
             </div>
             <p>
-                A nombre de las Comercializadora VAYCO, reciba un cordial saludo y al mismo tiempo le recordamos que estamos a sus órdenes para la distribución de insumos y productos para el mantenimiento Industrial.
+              Vayco es una empresa de distribución de insumos y productos para el mantenimiento industrial y residencial creado por un equipo de trabajo llamado ¨Hola Mundo. Se fundo en 2022 con la finalidad de llevar a cabo un proyecto integrador.
             </p>
             <p class="mb-4">
                 Esperando satisfacer sus necesidades y poder contribuir de manera profesional al desarrollo y liderazgo de su empresa.
