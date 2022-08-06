@@ -59,10 +59,10 @@
       </button>
       <div class="collapse navbar-collapse" id="navbarCollapse">
         <div class="navbar-nav ms-auto py-3 py-lg-0">
-          <a href="{{ url('/') }}" class="nav-item nav-link active">inicio</a>
-          <a href="{{ route('historia') }}" class="nav-item nav-link">Historia</a>
-          <a href="{{ route('productos.inicio') }}" class="nav-item nav-link">Productos</a>
-          <a href="{{ route('contactanos') }}" class="nav-item nav-link">Contáctanos</a>
+          <a href="{{ url('/') }}" class="nav-item nav-link {{ (request()->is('/')) ? 'active' : '' }}">inicio</a>
+          <a href="{{ route('historia') }}" class="nav-item nav-link {{ (request()->is('historia')) ? 'active' : '' }}">Historia</a>
+          <a href="{{ route('productos.inicio') }}" class="nav-item nav-link {{ (request()->is('productos-inicio')) ? 'active' : '' }}">Productos</a>
+          <a href="{{ route('contactanos') }}" class="nav-item nav-link {{ (request()->is('contactanos')) ? 'active' : '' }}">Contáctanos</a>
           @if (Route::has('login'))
             @auth
                 <a href="{{ url('/home') }}" class="nav-item nav-link">Home</a>

@@ -7,7 +7,7 @@ data-wow-delay="0.1s"
 >
 <div class="container text-center py-5">
   <h1 class="display-4 text-white animated slideInDown mb-4">
-   Nuestros servicios
+   Productos
   </h1>
   <nav aria-label="breadcrumb animated slideInDown">
   </nav>

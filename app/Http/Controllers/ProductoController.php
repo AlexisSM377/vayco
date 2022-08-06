@@ -92,6 +92,10 @@ class ProductoController extends Controller
      */
     public function show($id)
     {
+        $producto = Producto::find($id);
+        return view('producto.ver',[
+            'producto' => $producto
+        ]);
     }
 
     /**
@@ -102,6 +106,17 @@ class ProductoController extends Controller
      */
     public function edit($id)
     {
+        $proveedores = Proveedor::all();
+        $categorias = Categoria::all();
+        $marcas = Marca::all();
+
+        $producto = Producto::find($id);
+        return view('producto.editar',[
+            'producto' => $producto,
+            'proveedores' => $proveedores,
+            'categorias' => $categorias,
+            'marcas' => $marcas,
+        ]);
     }
 
     /**
@@ -113,7 +128,51 @@ class ProductoController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+
+        //valide los atributos de mi formulario para registar nuevos productos
+        //define las regalas que debe de tener cada atribito
+        $request->validate([
+            'nombre' => 'required',
+            'imagen' => 'image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+            'descripcion' => 'required',
+            'precio' => 'required',
+            'iva' => 'required',
+            'neto' => 'required',
+            'existencia' => 'required',
+            'proveedor' => 'required|integer',
+            'categoria' => 'required|integer',
+            'marca' => 'required|integer',
+        ]);
+
+        //guarde el producto con la informacion del formulario
+        $producto = Producto::find($id);
+
+        if ($request->imagen != null) {
+            //eleiminar la imgane anteriror para guardar la nueva imagen
+            unlink("images/".$producto->url_imagen);
+
+             //creacion del nombre de la nueva imagen subida
+            $imageName = time().'.'.$request->imagen->extension();
+            //guardddo de la nueva imagen en la carpetas imagenes
+            $request->imagen->move(public_path('images'), $imageName);
+        }
+
+        $producto->nombre = $request->nombre;
+        if ($request->imagen != null) {
+            $producto->url_imagen = $imageName;
+        }
+        $producto->descripcion = $request->descripcion;
+        $producto->precio = $request->precio;
+        $producto->iva = $request->iva;
+        $producto->precio_neto = $request->neto;
+        $producto->existencia = $request->existencia;
+        $producto->proveedor_id = $request->proveedor;
+        $producto->categoria_id = $request->categoria;
+        $producto->marca_id = $request->marca;
+        $producto->updateOrFail();
+
+        //despues de actualizar el prodcuto lo redireccione a la ruta home donde se muestra la tabla de productos
+        return redirect()->route("home");
     }
 
     /**

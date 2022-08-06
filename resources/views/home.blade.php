@@ -52,13 +52,17 @@
                 <td>{{$producto->categoria->nombre}}</td>
                 <td>{{$producto->marca->nombre}}</td>
                 <td>
-                    <form method="POST" action="{{ route('productos.destroy', $producto->id) }}">
-                        @csrf
-                        <input type="hidden" name="_method" value="DELETE">
-                        <button type="submit" class="btn btn-danger btn-icon" title="Borrar">
-                            🪣
-                        </button>
-                    </form>
+                    <div class="btn-group" role="group" aria-label="Basic example">
+                        <form method="POST" action="{{ route('productos.destroy', $producto->id) }}">
+                            @csrf
+                            <input type="hidden" name="_method" value="DELETE">
+                            <button type="submit" class="btn btn-danger btn-icon" title="Borrar">
+                                🪣
+                            </button>
+                        </form>
+                        <a href="{{route('productos.show',$producto->id)}}" role="button" class="btn btn-primary">Ver</a>
+                        <a href="{{route('productos.edit',$producto->id)}}" role="button" class="btn btn-info">Editar</a>
+                    </div>
                 </td>
             </tr>
 
