@@ -30,7 +30,7 @@ data-wow-delay="0.1s"
                             <p>{{$producto->categoria->nombre}}</p>
                             <p>{{$producto->marca->nombre}}</p>
                             <!-- Product price-->
-                            <p class="fs-5 fw-bolder">${{$producto->precio}}</p>
+                            <p class="fs-5 fw-bolder">${{$producto->precio_neto}}</p>
                         </div>
                     </div>
                 </div>

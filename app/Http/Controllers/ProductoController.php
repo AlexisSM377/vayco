@@ -54,7 +54,6 @@ class ProductoController extends Controller
             'descripcion' => 'required',
             'precio' => 'required',
             'iva' => 'required',
-            'neto' => 'required',
             'existencia' => 'required',
             'proveedor' => 'required|integer',
             'categoria' => 'required|integer',
@@ -73,7 +72,7 @@ class ProductoController extends Controller
         $producto->descripcion = $request->descripcion;
         $producto->precio = $request->precio;
         $producto->iva = $request->iva;
-        $producto->precio_neto = $request->neto;
+        $producto->precio_neto = $request->precio * $request->iva / 100 + $request->precio;
         $producto->existencia = $request->existencia;
         $producto->proveedor_id = $request->proveedor;
         $producto->categoria_id = $request->categoria;
@@ -137,7 +136,6 @@ class ProductoController extends Controller
             'descripcion' => 'required',
             'precio' => 'required',
             'iva' => 'required',
-            'neto' => 'required',
             'existencia' => 'required',
             'proveedor' => 'required|integer',
             'categoria' => 'required|integer',
@@ -164,7 +162,7 @@ class ProductoController extends Controller
         $producto->descripcion = $request->descripcion;
         $producto->precio = $request->precio;
         $producto->iva = $request->iva;
-        $producto->precio_neto = $request->neto;
+        $producto->precio_neto = $request->precio * $request->iva / 100 + $request->precio;
         $producto->existencia = $request->existencia;
         $producto->proveedor_id = $request->proveedor;
         $producto->categoria_id = $request->categoria;
