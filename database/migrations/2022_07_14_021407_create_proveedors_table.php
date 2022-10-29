@@ -18,7 +18,7 @@ return new class extends Migration
             $table->string('razon_social');
             $table->string('rfc');
             $table->string('correo');
-            $table->foreignId('direccion_id')->references('id')->on('direccions');
+            //$table->foreignId('direccion_id')->references('id')->on('direccions');
             $table->timestamps();
         });
     }

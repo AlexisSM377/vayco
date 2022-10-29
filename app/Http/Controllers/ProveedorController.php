@@ -59,14 +59,14 @@ class ProveedorController extends Controller
             'municipio' => 'required',
         ]);
 
-        //guarde el producto con la informacion del formulario
-        $direccion = new Direccion();
-        $direccion->colonia= $request->colonia;
-        $direccion->cp = $request->cp;
-        $direccion->calle = $request->calle;
-        $direccion->no_ext = $request->numero;
-        $direccion->municipio_id = $request->municipio;
-        $direccion->saveOrFail();
+        // //guarde el producto con la informacion del formulario
+        // $direccion = new Direccion();
+        // $direccion->colonia= $request->colonia;
+        // $direccion->cp = $request->cp;
+        // $direccion->calle = $request->calle;
+        // $direccion->no_ext = $request->numero;
+        // $direccion->municipio_id = $request->municipio;
+        // $direccion->saveOrFail();
 
 
         //guarde el producto con la informacion del formulario
@@ -74,7 +74,7 @@ class ProveedorController extends Controller
         $proveedor->razon_social = $request->nombre;
         $proveedor->rfc = $request->rfc;
         $proveedor->correo = $request->email;
-        $proveedor->direccion_id = $direccion->id;
+        // $proveedor->direccion_id = $direccion->id;
         $proveedor->saveOrFail();
 
         //despues de guardar el prodcuto lo redireccione a la ruta home donde se muestra el prodcto que acabo de guardar

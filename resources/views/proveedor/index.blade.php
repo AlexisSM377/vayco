@@ -18,7 +18,7 @@
               <th scope="col">Nombre</th>
               <th scope="col">RFC</th>
               <th scope="col">Correo</th>
-              <th scope="col">Direccion</th>
+              
               <th scope="col">Creado el</th>
             </tr>
           </thead>
@@ -28,7 +28,7 @@
                 <td>{{$proveedor->razon_social}}</td>
                 <td>{{$proveedor->rfc}}</td>
                 <td>{{$proveedor->correo}}</td>
-                <td>{{$proveedor->direccion->colonia}} {{$proveedor->direccion->cp}}, {{$proveedor->direccion->calle}} {{$proveedor->direccion->no_ext}} {{$proveedor->direccion->municipio->nombre}} {{$proveedor->direccion->municipio->estado->nombre}}</td>
+                
 
                 <td>{{$proveedor->created_at}}</td>
             </tr>

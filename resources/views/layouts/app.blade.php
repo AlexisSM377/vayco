@@ -82,9 +82,6 @@
                                     <a class="dropdown-item" href="{{ route('home') }}">
                                         Productos
                                     </a>
-                                    <a class="dropdown-item" href="{{ route('contactos') }}">
-                                        Contactos
-                                    </a>
                                 </div>
                             </li>
                         @endguest
