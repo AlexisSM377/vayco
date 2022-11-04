@@ -1,6 +1,6 @@
 @extends('layouts.app')
 
-@section('body')
+@section('content')
 <!-- Outer Row -->
 <div class="row justify-content-center">
 
@@ -14,14 +14,14 @@
                     <div class="col-lg-6">
                         <div class="p-5">
                             <div class="text-center">
-                                <h1 class="h4 text-gray-900 mb-4">Welcome Back!</h1>
+                                <h1 class="h4 text-gray-900 mb-4">Bienvenido</h1>
                             </div>
-                            <form method="POST" action="{{ route('login') }}">
+                            <form class="user" method="POST" action="{{ route('login') }}">
                                 @csrf
                                 <div class="form-group">
                                     <input type="email" class="form-control @error('email') is-invalid @enderror form-control-user"
                                         id="email"
-                                        value="{{ old('email') }}"aria-describedby="emailHelp"
+                                        value="{{ old('email') }}" name="email" aria-describedby="emailHelp"
                                         placeholder="correo electronico">
                                         @error('email')
                                             <span class="invalid-feedback" role="alert">
@@ -30,7 +30,7 @@
                                         @enderror
                                 </div>
                                 <div class="form-group">
-                                    <input type="password" class="form-control @error('password') is-invalid @enderror form-control-user"
+                                    <input type="password" name="password" class="form-control @error('password') is-invalid @enderror form-control-user"
                                         id="password" placeholder="contraseña">
                                     @error('password')
                                         <span class="invalid-feedback" role="alert">
@@ -50,20 +50,16 @@
                                 </button>
                                 <hr>
                             </form>
-                            <hr>
                             <div class="text-center">
                                 @if (Route::has('password.request'))
-                                <a class="small" href="{{ route('password.request') }}">Olvidaste la contraseña</a>
+                                <a class="small" href="{{ route('password.request') }}">¿Olvidaste la contraseña?</a>
                                 @endif
                             </div>
-                            {{-- <div class="text-center">
-                                <a class="small" href="register.html">Create an Account!</a>
-                            </div> --}}
-                            @if (Route::has('register'))
-                            <li class="nav-item">
-                                <a class="nav-link" href="{{ route('register') }}">{{ __('Register') }}</a>
-                            </li>
-                        @endif
+                            <div class="text-center">
+                                @if (Route::has('register'))
+                                    <a class="small" href="{{ route('register') }}">{{ __('Crear cuenta') }}</a>
+                                @endif
+                            </div>
 
                         </div>
                     </div>
