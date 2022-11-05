@@ -1,6 +1,7 @@
 @extends('layouts.master')
 
 @section('content')
+<h1 class="h3 mb-2 text-gray-800">Marca</h1>
 <div class="container">
     <div class="row justify-content-center">
         <div class="col-md-8">
