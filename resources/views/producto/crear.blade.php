@@ -8,7 +8,7 @@
         <form method="POST" action="{{ route('productos.store') }}" enctype="multipart/form-data" >
             @csrf
 
-            <div class="row mb-3">
+            <div class="form-group">
                 <label for="nombre" class="col-md-4 col-form-label text-md-end">Nombre</label>
 
                 <div class="col-md-6">
@@ -22,7 +22,7 @@
                 </div>
             </div>
 
-            <div class="row mb-3">
+            <div class="form-group">
                 <label for="imagen" class="col-md-4 col-form-label text-md-end">Imagen</label>
                 <div class="col-md-6">
                     <input type="file" class="form-control @error('imagen') is-invalid @enderror" id="imagen" name="imagen">
@@ -35,7 +35,7 @@
 
               </div>
 
-            <div class="row mb-3">
+            <div class="form-group">
                 <label for="descripcion" class="col-md-4 col-form-label text-md-end">Descripcion</label>
 
                 <div class="col-md-6">
@@ -49,7 +49,7 @@
                 </div>
             </div>
 
-            <div class="row mb-3">
+            <div class="form-group">
                 <label for="precio" class="col-md-4 col-form-label text-md-end">Precio</label>
 
                 <div class="col-md-6">
@@ -63,7 +63,7 @@
                 </div>
             </div>
 
-            <div class="row mb-3">
+            <div class="form-group">
                 <label for="iva" class="col-md-4 col-form-label text-md-end">IVA</label>
 
                 <div class="col-md-6">
@@ -87,7 +87,7 @@
                     @enderror
                 </div>
             </div> --}}
-            <div class="row mb-3">
+            <div class="form-group">
                 <label for="existencia" class="col-md-4 col-form-label text-md-end">Existencia</label>
 
                 <div class="col-md-6">
@@ -99,11 +99,11 @@
                     @enderror
                 </div>
             </div>
-            <div class="row mb-3">
+            <div class="form-group">
                 <label for="proveedor" class="col-md-4 col-form-label text-md-end">Proveedor</label>
 
                 <div class="col-md-6">
-                    <select class="form-select @error('proveedor') is-invalid @enderror" name="proveedor">
+                    <select class="form-control @error('proveedor') is-invalid @enderror" name="proveedor">
                         <option value="">Selecciona una Opcion</option>
                         @forelse ($proveedores as $proveedor)
                         <option value="{{$proveedor->id}}">{{$proveedor->razon_social}}</option>
@@ -118,11 +118,11 @@
                         @enderror
                 </div>
             </div>
-            <div class="row mb-3">
+            <div class="form-group">
                 <label for="categoria" class="col-md-4 col-form-label text-md-end">Categoria</label>
 
                 <div class="col-md-6">
-                    <select class="form-select @error('categoria') is-invalid @enderror" name="categoria">
+                    <select class="form-control @error('categoria') is-invalid @enderror" name="categoria">
                         <option value="">Selecciona una Opcion</option>
                         @forelse ($categorias as $categoria)
                         <option value="{{$categoria->id}}">{{$categoria->nombre}}</option>
@@ -137,11 +137,11 @@
                         @enderror
                 </div>
             </div>
-            <div class="row mb-3">
+            <div class="form-group">
                 <label for="marca" class="col-md-4 col-form-label text-md-end">Marca</label>
 
                 <div class="col-md-6">
-                    <select class="form-select @error('marca') is-invalid @enderror" name="marca">
+                    <select class="form-control @error('marca') is-invalid @enderror" name="marca">
                         <option value="">Selecciona una Opcion</option>
                         @forelse ($marcas as $marca)
                         <option value="{{$marca->id}}">{{$marca->nombre}}</option>
@@ -158,7 +158,7 @@
             </div>
 
             <div class="row mb-0">
-                <div class="col-md-6 offset-md-4">
+                <div class="form-group">
 
 
                     <button type="submit" class="btn btn-primary">
@@ -167,22 +167,6 @@
                 </div>
             </div>
         </form>
-        {{-- <form>
-            <div class="form-group">
-              <label for="exampleInputEmail1">Email address</label>
-              <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email">
-              <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
-            </div>
-            <div class="form-group">
-              <label for="exampleInputPassword1">Password</label>
-              <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password">
-            </div>
-            <div class="form-check">
-              <input type="checkbox" class="form-check-input" id="exampleCheck1">
-              <label class="form-check-label" for="exampleCheck1">Check me out</label>
-            </div>
-            <button type="submit" class="btn btn-primary">Submit</button>
-          </form> --}}
     </div>
   </div>
 
@@ -190,13 +174,12 @@
     <a role="button" href="{{ route('home') }}" class="btn btn-primary">
         Regresar
     </a>
-
-    <div class="row justify-content-center">
+    {{-- <div class="row justify-content-center">
         <div class="col-md-8">
             <div class="card">
                 <div class="card-header">Registar Producto</div>
 
-                <div class="card-body">
+                <div class="card-body"> --}}
                     
                 </div>
             </div>
