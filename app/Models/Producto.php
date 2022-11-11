@@ -31,7 +31,7 @@ class Producto extends Model
      */
     public function proveedor()
     {
-        return $this->hasOne(Proveedor::class,'id', 'proveedor_id');
+        return $this->belongsTo(Proveedor::class,'proveedor_id', 'id');
     }
 
     /**

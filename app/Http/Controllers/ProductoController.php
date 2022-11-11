@@ -182,7 +182,7 @@ class ProductoController extends Controller
     public function destroy($id)
     {
         $producto = Producto::find($id);
-        unlink("images/".$producto->url_imagen);
+        // unlink("images/".$producto->url_imagen);
         $producto->delete();
 
         return back();

@@ -14,6 +14,14 @@ class Marca extends Model
      */
     public function categoria()
     {
-        return $this->hasOne(Categoria::class,'id', 'categoria_id');
+        return $this->belongsTo(Categoria::class,'categoria_id', 'id');
+    }
+
+    /**
+     * relacione marca a sus productos
+     */
+    public function productos()
+    {
+        return $this->hasMany(Producto::class, 'marca_id', 'id');
     }
 }
