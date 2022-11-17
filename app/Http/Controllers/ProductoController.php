@@ -71,8 +71,8 @@ class ProductoController extends Controller
         $producto->url_imagen = $imageName;
         $producto->descripcion = $request->descripcion;
         $producto->precio = $request->precio;
-        $producto->iva = $request->iva;
-        $producto->precio_neto = $request->precio * $request->iva / 100 + $request->precio;
+        $producto->iva = 16;
+        $producto->precio_neto = $request->precio * 16 / 100 + $request->precio;
         $producto->existencia = $request->existencia;
         $producto->proveedor_id = $request->proveedor;
         $producto->categoria_id = $request->categoria;
@@ -161,8 +161,8 @@ class ProductoController extends Controller
         }
         $producto->descripcion = $request->descripcion;
         $producto->precio = $request->precio;
-        $producto->iva = $request->iva;
-        $producto->precio_neto = $request->precio * $request->iva / 100 + $request->precio;
+        $producto->iva = 16;
+        $producto->precio_neto = $request->precio * 16 / 100 + $request->precio;
         $producto->existencia = $request->existencia;
         $producto->proveedor_id = $request->proveedor;
         $producto->categoria_id = $request->categoria;

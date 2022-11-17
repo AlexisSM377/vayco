@@ -24,7 +24,7 @@ class ProductoFactory extends Factory
         
         return [
             'nombre' => $this->faker->name(),
-            'url_imagen'=>$this->faker->imageUrl($width = 640, $height = 480),
+            // 'url_imagen'=>$this->faker->imageUrl($width = 640, $height = 480),
             'descripcion' =>$this->faker->text($maxNbChars = 20),
             'precio' =>$this->faker->numberBetween(500, 2000),
             'iva' => 16,

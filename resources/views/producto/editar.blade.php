@@ -31,7 +31,7 @@
                             </div>
                         </div>
 
-                        <div class="row mb-3">
+                        {{-- <div class="row mb-3">
                             <label for="imagen" class="col-md-4 col-form-label text-md-end">Imagen</label>
                             <div class="col-md-6">
                                 <input type="file" class="form-control @error('imagen') is-invalid @enderror" id="imagen" name="imagen">
@@ -42,7 +42,7 @@
                                 @enderror
                             </div>
 
-                          </div>
+                          </div> --}}
 
                         <div class="row mb-3">
                             <label for="descripcion" class="col-md-4 col-form-label text-md-end">Descripcion</label>
@@ -72,7 +72,7 @@
                             </div>
                         </div>
 
-                        <div class="row mb-3">
+                        {{-- <div class="row mb-3">
                             <label for="iva" class="col-md-4 col-form-label text-md-end">IVA</label>
 
                             <div class="col-md-6">
@@ -83,7 +83,8 @@
                                     </span>
                                 @enderror
                             </div>
-                        </div>
+                        </div> --}}
+
                         {{-- <div class="row mb-3">
                             <label for="neto" class="col-md-4 col-form-label text-md-end">Precio Neto</label>
 
