@@ -25,8 +25,8 @@ return new class extends Migration
             $table->foreignId('proveedor_id')->references('id')->on('proveedors');
             $table->foreignId('categoria_id')->references('id')->on('categorias');
             $table->foreignId('marca_id')->references('id')->on('marcas');
-
             $table->timestamps();
+            $table->softDeletes();
         });
     }
 

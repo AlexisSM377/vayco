@@ -81,6 +81,7 @@
             <div class="bg-white py-2 collapse-inner rounded">
                 <a class="collapse-item" href="{{ route('home') }}">Listado de productos</a>
                 <a class="collapse-item" href="{{ route('productos.create') }}">Crear Producto</a>
+                <a class="collapse-item" href="{{ route('productos.eliminado') }}">Eliminados</a>
             </div>
         </div>
     </li>

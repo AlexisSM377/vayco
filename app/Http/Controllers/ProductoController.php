@@ -50,10 +50,10 @@ class ProductoController extends Controller
         //define las regalas que debe de tener cada atribito
         $request->validate([
             'nombre' => 'required',
-            'imagen' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+            //'imagen' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
             'descripcion' => 'required',
             'precio' => 'required',
-            'iva' => 'required',
+            //'iva' => 'required',
             'existencia' => 'required',
             'proveedor' => 'required|integer',
             'categoria' => 'required|integer',
@@ -61,14 +61,14 @@ class ProductoController extends Controller
         ]);
 
         //creacion del nombre de la imagen subida
-        $imageName = time().'.'.$request->imagen->extension();
+        //$imageName = time().'.'.$request->imagen->extension();
         //guarddado de la imagen en la carpetas imagenes
-        $request->imagen->move(public_path('images'), $imageName);
+        //$request->imagen->move(public_path('images'), $imageName);
 
         //guarde el producto con la informacion del formulario
         $producto = new Producto;
         $producto->nombre = $request->nombre;
-        $producto->url_imagen = $imageName;
+        //$producto->url_imagen = $imageName;
         $producto->descripcion = $request->descripcion;
         $producto->precio = $request->precio;
         $producto->iva = 16;
@@ -186,5 +186,17 @@ class ProductoController extends Controller
         $producto->delete();
 
         return back();
+    }
+
+    public function productosEliminados()
+    {
+        //cree la variable prodcutos para guaradar los datos de la tabvla producto
+        // consulte todos los datos de la tabla productos
+        $productos = Producto::with('proveedor','marca','categoria')->onlyTrashed()->get();
+        
+        //envie los datos de productos a la vista home
+        return view('producto.eliminados', [
+            'productos' => $productos,
+        ]);
     }
 }

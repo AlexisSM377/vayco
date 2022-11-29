@@ -30,6 +30,7 @@ Route::get('/', [App\Http\Controllers\HomeController::class, 'index'])->name('ho
 Route::get('home', [App\Http\Controllers\HomeController::class, 'index'])->name('home')->middleware('auth');
 
 Route::resource('productos', ProductoController::class)->middleware('auth');
+Route::get('/productos-eliminados', [ProductoController::class, 'productosEliminados'])->name('productos.eliminado')->middleware('auth');
 Route::resource('marcas', MarcaController::class)->middleware('auth');
 Route::resource('categorias', CategoriaController::class)->middleware('auth');
 Route::resource('proveedores', ProveedorController::class)->middleware('auth');

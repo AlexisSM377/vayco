@@ -27,13 +27,7 @@ class HomeController extends Controller
         //cree la variable prodcutos para guaradar los datos de la tabvla producto
         // consulte todos los datos de la tabla productos
         $productos = Producto::with('proveedor','marca','categoria')->get();
-        $proveedores = Proveedor::with('productos')->get();
         
-        // return response()->json([
-        //     'productos' => $productos,
-        //     // 'proveedores' => $proveedores
-        // ]);
-
         //envie los datos de productos a la vista home
         return view('home', [
             'productos' => $productos,

@@ -170,22 +170,4 @@
         </form>
     </div>
   </div>
-
-<div class="container">
-    <a role="button" href="{{ route('home') }}" class="btn btn-primary">
-        Regresar
-    </a>
-    {{-- <div class="row justify-content-center">
-        <div class="col-md-8">
-            <div class="card">
-                <div class="card-header">Registar Producto</div>
-
-                <div class="card-body"> --}}
-                    
-                </div>
-            </div>
-        </div>
-    </div>
-
-</div>
 @endsection
