@@ -22,7 +22,7 @@
                 </div>
             </div>
 
-            {{-- <div class="form-group">
+            <div class="form-group">
                 <label for="imagen" class="col-md-4 col-form-label text-md-end">Imagen</label>
                 <div class="col-md-6">
                     <input type="file" class="form-control @error('imagen') is-invalid @enderror" id="imagen" name="imagen">
@@ -33,7 +33,7 @@
                     @enderror
                 </div>
 
-              </div> --}}
+              </div>
 
             <div class="form-group">
                 <label for="descripcion" class="col-md-4 col-form-label text-md-end">Descripcion</label>

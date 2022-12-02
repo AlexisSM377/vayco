@@ -19,7 +19,7 @@ class ProductoController extends Controller
         $productos = Producto::with('proveedor','marca','categoria')->get();
 
         return response()->json([
-            'productos' => $productos,
+            'productos' => $productos
         ]);
     }
 

@@ -24,7 +24,7 @@ class ProductoFactory extends Factory
         
         return [
             'nombre' => $this->faker->name(),
-            // 'url_imagen'=>$this->faker->imageUrl($width = 640, $height = 480),
+            'url_imagen'=>$this->faker->imageUrl($width = 640, $height = 480),
             'descripcion' =>$this->faker->text($maxNbChars = 20),
             'precio' =>$this->faker->numberBetween(500, 2000),
             'iva' => 16,
@@ -33,7 +33,6 @@ class ProductoFactory extends Factory
             'proveedor_id'=>$this->faker->numberBetween(1, 20),
             'categoria_id'=>$this->faker->numberBetween(1, 15),
             'marca_id'=>$this->faker->numberBetween(1, 20),
-
         ];
     }
 }

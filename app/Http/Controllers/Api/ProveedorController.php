@@ -1,11 +1,11 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Api;
 
-use App\Models\Categoria;
+use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 
-class CategoriaController extends Controller
+class ProveedorController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -14,11 +14,7 @@ class CategoriaController extends Controller
      */
     public function index()
     {
-        $categorias = Categoria::all();
-
-        return view('categoria.index', [
-            'categorias' => $categorias
-        ]);
+        //
     }
 
     /**
@@ -39,19 +35,7 @@ class CategoriaController extends Controller
      */
     public function store(Request $request)
     {
-        //valide los atributos de mi formulario para validar los datos de conacto
-        //define las regalas que debe de tener cada atribito
-        $request->validate([
-            'nombre' => 'required',
-        ]);
-
-        //guarde el producto con la informacion del formulario
-        $categoria = new Categoria();
-        $categoria->nombre = $request->nombre;
-        $categoria->saveOrFail();
-
-        //despues de guardar el prodcuto lo redireccione a la ruta home donde se muestra el prodcto que acabo de guardar
-        return redirect()->route("categorias.index")->with('status', 'Categoria guardada correctamente!');
+        //
     }
 
     /**

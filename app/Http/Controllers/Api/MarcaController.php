@@ -1,11 +1,12 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Api;
 
-use App\Models\Categoria;
+use App\Http\Controllers\Controller;
+use App\Models\Marca;
 use Illuminate\Http\Request;
 
-class CategoriaController extends Controller
+class MarcaController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -14,10 +15,10 @@ class CategoriaController extends Controller
      */
     public function index()
     {
-        $categorias = Categoria::all();
+        $marca = Marca::with('marcas')->get();
 
-        return view('categoria.index', [
-            'categorias' => $categorias
+        return response()->json([
+            'marcas' => $marca,
         ]);
     }
 
@@ -39,19 +40,14 @@ class CategoriaController extends Controller
      */
     public function store(Request $request)
     {
-        //valide los atributos de mi formulario para validar los datos de conacto
-        //define las regalas que debe de tener cada atribito
-        $request->validate([
-            'nombre' => 'required',
-        ]);
-
-        //guarde el producto con la informacion del formulario
-        $categoria = new Categoria();
-        $categoria->nombre = $request->nombre;
-        $categoria->saveOrFail();
+        
+        $marca = new Marca();
+        $marca->nombre = $request->nombre;
+        $marca->marca_id = $request->marca;
+        $marca->saveOrFail();
 
         //despues de guardar el prodcuto lo redireccione a la ruta home donde se muestra el prodcto que acabo de guardar
-        return redirect()->route("categorias.index")->with('status', 'Categoria guardada correctamente!');
+        return redirect()->route("marcas.index")->with('status', 'Marca guardada correctamente!');
     }
 
     /**
@@ -62,7 +58,16 @@ class CategoriaController extends Controller
      */
     public function show($id)
     {
-        //
+        $marca = Marca::with('marcas')->find($id);
+
+        if ($marca == null ) {
+            return response()->json([
+                'mensaje' => "la marca no existe"
+            ]);
+        }
+        return response()->json([
+            'marcas' => $marca
+        ]);
     }
 
     /**

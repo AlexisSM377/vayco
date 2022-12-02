@@ -71,60 +71,60 @@
     </div>
 
     <!-- Nav Item - Pages Collapse Menu -->
-    <li class="nav-item">
+    <li class="nav-item {{Str::startsWith(request()->route()->uri(), 'productos') ? 'active' : ''}}">
         <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseProd"
             aria-expanded="true" aria-controls="collapseProd">
             <i class="fas fa-fw fa-folder"></i>
             <span>Productos</span>
         </a>
-        <div id="collapseProd" class="collapse" aria-labelledby="headingPages" data-parent="#accordionSidebar">
-            <div class="bg-white py-2 collapse-inner rounded">
-                <a class="collapse-item" href="{{ route('home') }}">Listado de productos</a>
-                <a class="collapse-item" href="{{ route('productos.create') }}">Crear Producto</a>
-                <a class="collapse-item" href="{{ route('productos.eliminado') }}">Eliminados</a>
+        <div id="collapseProd" class="collapse {{Str::startsWith(request()->route()->uri(), 'productos') ? 'show' : ''}}" aria-labelledby="headingPages" data-parent="#accordionSidebar">
+            <div class="bg-white py-2 collapse-inner rounded show">
+                <a class="collapse-item {{request()->routeIs('productos.index') ? 'active' : ''}}"  href="{{ route('productos.index') }}">Listado de productos</a>
+                <a class="collapse-item {{request()->routeIs('productos.create') ? 'active' : ''}}" href="{{ route('productos.create') }}">Crear Producto</a>
+                <a class="collapse-item {{request()->routeIs('productos.eliminado') ? 'active' : ''}}" href="{{ route('productos.eliminado') }}">Eliminados</a>
             </div>
         </div>
     </li>
 
     <!-- Nav Item - Pages Collapse Menu -->
-    <li class="nav-item">
+    <li class="nav-item {{Str::startsWith(request()->route()->uri(), 'proveedores') ? 'active' : ''}}">
         <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseProve"
             aria-expanded="true" aria-controls="collapseProve">
             <i class="fas fa-fw fa-folder"></i>
             <span>Proveedor</span>
         </a>
-        <div id="collapseProve" class="collapse" aria-labelledby="headingPages" data-parent="#accordionSidebar">
+        <div id="collapseProve" class="collapse {{Str::startsWith(request()->route()->uri(), 'proveedores') ? 'show' : ''}}" aria-labelledby="headingPages" data-parent="#accordionSidebar">
             <div class="bg-white py-2 collapse-inner rounded">
-                <a class="collapse-item" href="{{ route('proveedores.index') }}">Proveedor</a>
-                <a class="collapse-item" href="{{ route('proveedores.create') }}">Registar Proveedor</a>
+                <a class="collapse-item {{request()->routeIs('proveedores.index') ? 'active' : ''}}" href="{{ route('proveedores.index') }}">Proveedor</a>
+                <a class="collapse-item {{request()->routeIs('proveedores.create') ? 'active' : ''}}" href="{{ route('proveedores.create') }}">Registar Proveedor</a>
             </div>
         </div>
     </li>
 
     <!-- Nav Item - Pages Collapse Menu -->
-    <li class="nav-item">
+    <li class="nav-item {{Str::startsWith(request()->route()->uri(), 'marcas') ? 'active' : ''}}">
         <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseMar"
             aria-expanded="true" aria-controls="collapseMar">
             <i class="fas fa-fw fa-folder"></i>
             <span>Marca</span>
         </a>
-        <div id="collapseMar" class="collapse" aria-labelledby="headingPages" data-parent="#accordionSidebar">
+        <div id="collapseMar" class="collapse {{Str::startsWith(request()->route()->uri(), 'marcas') ? 'show' : ''}}" aria-labelledby="headingPages" data-parent="#accordionSidebar">
             <div class="bg-white py-2 collapse-inner rounded">
-                <a class="collapse-item" href="{{ route('marcas.index') }}">Registrar Marca</a>
+                <a class="collapse-item {{request()->routeIs('marcas.index') ? 'active' : ''}}" href="{{ route('marcas.index') }}">Registrar Marca</a>
             </div>
         </div>
     </li>
 
     <!-- Nav Item - Pages Collapse Menu -->
-    <li class="nav-item">
+    <li class="nav-item {{Str::startsWith(request()->route()->uri(), 'categorias') ? 'active' : ''}}">
         <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapsePages"
             aria-expanded="true" aria-controls="collapsePages">
             <i class="fas fa-fw fa-folder"></i>
             <span>Categorias</span>
         </a>
-        <div id="collapsePages" class="collapse" aria-labelledby="headingPages" data-parent="#accordionSidebar">
+        <div id="collapsePages" class="collapse {{Str::startsWith(request()->route()->uri(), 'categorias') ? 'show' : ''}}" aria-labelledby="headingPages" data-parent="#accordionSidebar">
             <div class="bg-white py-2 collapse-inner rounded">
-                <a class="collapse-item" href="{{ route('categorias.index') }}">Ver Categoria</a>
+                <a class="collapse-item {{request()->routeIs('categorias.index') ? 'active' : ''}}" href="{{ route('categorias.index') }}">Ver Categoria</a>
             </div>
         </div>
     </li>

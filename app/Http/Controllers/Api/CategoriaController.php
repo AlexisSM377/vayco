@@ -1,7 +1,8 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Api;
 
+use App\Http\Controllers\Controller;
 use App\Models\Categoria;
 use Illuminate\Http\Request;
 
@@ -14,10 +15,10 @@ class CategoriaController extends Controller
      */
     public function index()
     {
-        $categorias = Categoria::all();
+        $categoria = Categoria::with('categorias')->get();
 
-        return view('categoria.index', [
-            'categorias' => $categorias
+        return response()->json([
+            'categorias' => $categoria,
         ]);
     }
 
@@ -39,19 +40,14 @@ class CategoriaController extends Controller
      */
     public function store(Request $request)
     {
-        //valide los atributos de mi formulario para validar los datos de conacto
-        //define las regalas que debe de tener cada atribito
-        $request->validate([
-            'nombre' => 'required',
-        ]);
-
-        //guarde el producto con la informacion del formulario
         $categoria = new Categoria();
         $categoria->nombre = $request->nombre;
         $categoria->saveOrFail();
-
-        //despues de guardar el prodcuto lo redireccione a la ruta home donde se muestra el prodcto que acabo de guardar
-        return redirect()->route("categorias.index")->with('status', 'Categoria guardada correctamente!');
+        
+        return response()->json([
+            'mensaje' => "la categoria se ha registrado correctamante",
+            'categorias' => $categoria,
+        ]);
     }
 
     /**
@@ -62,7 +58,16 @@ class CategoriaController extends Controller
      */
     public function show($id)
     {
-        //
+        $categoria = Categoria::with('categorias')->find($id);
+
+        if ($categoria == null ) {
+            return response()->json([
+                'mensaje' => "la categoria no existe"
+            ]);
+        }
+        return response()->json([
+            'categorias' => $categoria
+        ]);
     }
 
     /**
@@ -85,7 +90,16 @@ class CategoriaController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        //la categoria con la informacion del formulario
+        $categoria = Categoria::find($id);
+
+        $categoria->nombre = $request->nombre;
+        $categoria->updateOrFail();
+
+         return response()->json([
+            'mensaje' => "la categoria se ha actualizado",
+            'categorias' => $categoria,
+        ]);
     }
 
     /**
@@ -96,6 +110,13 @@ class CategoriaController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $categoria = Categoria::with('categorias')->find($id);
+
+        if ($categoria == null ) {
+            return response()->json([
+                'mensaje' => "la categoria no existe",
+            ]);
+        }
+
     }
 }

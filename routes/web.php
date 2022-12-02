@@ -41,4 +41,3 @@ Route::get('/productos-inicio', [WebController::class, 'index'])->name('producto
 Route::get('/contactanos', [WebController::class, 'contact'])->name('contactanos');
 Route::get('/historia', [WebController::class, 'historia'])->name('historia');
 Route::post('/contacto', [ContactoController::class, 'enviar'])->name('contacto');
-
