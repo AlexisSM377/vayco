@@ -154,7 +154,7 @@ class ProductoController extends Controller
 
         if ($request->imagen != null) {
             //eleiminar la imgane anteriror para guardar la nueva imagen
-            unlink("images/".$producto->url_imagen);
+            //unlink("images/".$producto->url_imagen);
 
              //creacion del nombre de la nueva imagen subida
             $imageName = time().'.'.$request->imagen->extension();

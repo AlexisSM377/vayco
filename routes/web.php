@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\CategoriaController;
 use App\Http\Controllers\ContactoController;
+use App\Http\Controllers\DocenciaController;
 use App\Http\Controllers\MarcaController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ProductoController;
@@ -41,3 +42,8 @@ Route::get('/productos-inicio', [WebController::class, 'index'])->name('producto
 Route::get('/contactanos', [WebController::class, 'contact'])->name('contactanos');
 Route::get('/historia', [WebController::class, 'historia'])->name('historia');
 Route::post('/contacto', [ContactoController::class, 'enviar'])->name('contacto');
+
+Route::get('rutaget', function(){
+    return ("Hola desde la ruta get");
+});
+Route::resource('all',DocenciaController::class);
